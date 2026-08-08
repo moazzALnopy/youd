@@ -80,6 +80,12 @@
   .qty-val{min-width:14px;text-align:center;font-size:13px;font-weight:700;}
   .add-btn{padding:7px 16px;border-radius:9px;border:1.5px solid var(--orange);background:#fff;color:var(--orange);font-weight:700;font-size:12px;cursor:pointer;}
 
+  .item-card.sized{flex-direction:column;align-items:stretch;}
+  .size-list{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
+  .size-row{display:flex;justify-content:space-between;align-items:center;background:var(--orange-tint);border-radius:10px;padding:8px 10px;}
+  .size-row .size-label{font-size:12.5px;font-weight:700;color:var(--ink);}
+  .size-row .size-price{font-size:11.5px;color:var(--grey);margin-left:8px;font-weight:500;}
+
   /* Sticky cart bar (global, across all restaurants) */
   .cartbar{position:fixed;left:0;right:0;bottom:0;max-width:430px;margin:0 auto;padding:12px 16px;z-index:30;}
   .cartbar-inner{
@@ -143,34 +149,127 @@
    ============================================================ */
 const RESTAURANTS = [
   {
-    id: "plato",
-    name: "Plato",
+    id: "Brizo",
+    name: "Brizo",
     tag: "YOUD · Plato area",
-    meta: "Coastal dining hub",
+    meta: "Grill and Fried sandwishs",
     accent: "#FF6A00",
     sheetUrl: "PASTE_PLATO_GOOGLE_APPS_SCRIPT_URL_HERE",
     categories: [
       {
-        name: "Starters",
-        items: [
-          { name: "Burrata Salad", desc: "Heirloom tomato, basil, aged balsamic", price: 190 },
-        ]
-      },
+        name: "Fried meals",
+      items: [
+          { name: "Shermp meal", desc: "", sizes: [
+            { label: "Medium", price: 125 },
+            { label: "Large", price: 250 },
+          ] },
+		    items: [
+          { name: "Squid", desc: "", sizes: [
+            { label: "Medium", price: 100 },
+            { label: "Large", price: 200 },
+          ] },
+		    items: [
+          { name: "Fillet", desc: "", sizes: [
+            { label: "Medium", price: 100 },
+            { label: "Large", price: 200 },
+          ] },
+		    items: [
+          { name: "Mix", desc: "", sizes: [
+            { label: "Large", price: 280 },
+          ] },
       {
-        name: "Mains",
-        items: [
-          { name: "Grilled Sea Bass", desc: "Catch of the day, lemon butter, herbs", price: 380 },
-          { name: "Seafood Linguine", desc: "Shrimp, calamari, cherry tomato, white wine", price: 340 },
-        ]
-      },
+        name: "Sausage and liver meals",
+  items: [
+          { name: "sausage meal", desc: "", sizes: [
+            { label: "Large", price: 220 },
+          ] },
+		    items: [
+          { name: "liver meal", desc: "", sizes: [
+            { label: "Large", price: 180 },
+          ] },
+		      items: [
+          { name: "Mix meal", desc: "", sizes: [
+            { label: "Large", price: 380 },
+          ] },
       {
-        name: "Drinks",
-        items: [
-          { name: "Sunset Mojito (Mocktail)", desc: "Lime, mint, soda", price: 110 },
-        ]
-      },
-    ]
-  },
+	   name: "Grilled meals",
+      items: [
+          { name: "Shermp meal", desc: "", sizes: [
+            { label: "Medium", price: 150 },
+            { label: "Large", price: 300 },
+          ] },
+		    items: [
+          { name: "Squid", desc: "", sizes: [
+            { label: "Medium", price: 120 },
+            { label: "Large", price: 220 },
+          ] },
+		    items: [
+          { name: "Fillet", desc: "", sizes: [
+            { label: "Medium", price: 120 },
+            { label: "Large", price: 220 },
+          ] },
+		    items: [
+          { name: "Mix", desc: "", sizes: [
+            { label: "Medium", price: 150 },
+            { label: "Large", price: 300 },
+          ] },
+	   {
+                name: "Fried Sandwich",
+      items: [
+          { name: "Shermp meal", desc: "", sizes: [
+            { label: "Medium", price: 100 },
+            { label: "Large", price: 170 },
+          ] },
+		    items: [
+          { name: "Squid", desc: "", sizes: [
+            { label: "Medium", price: 90 },
+            { label: "Large", price: 150 },
+          ] },
+		    items: [
+          { name: "Fillet", desc: "", sizes: [
+            { label: "Medium", price: 90 },
+            { label: "Large", price: 150 },
+          ] },
+		    items: [
+          { name: "Mix", desc: "", sizes: [
+	  { label: "Medium", price: 130 },	  
+            { label: "Large", price: 220 },
+          ] },
+      {
+        name: "Sausage and liver Sandwich",
+  items: [
+          { name: "sausage Sandwich", desc: "", sizes: [
+           { label: "Medium", price: 120 },  
+		   { label: "Large", price: 150 },
+          ] },
+		    items: [
+          { name: "liver Sandwich", desc: "", sizes: [
+            { label: "Large", price: 90 },
+          ] },
+		  
+      {
+	   name: "Grilled Sandwich",
+      items: [
+          { name: "Shermp Sandwich", desc: "", sizes: [
+            { label: "Medium", price: 135 },
+            { label: "Large", price: 200 },
+          ] },
+		    items: [
+          { name: "Squid Sandwich", desc: "", sizes: [
+            { label: "Medium", price: 100 },
+            { label: "Large", price: 170 },
+          ] },
+		    items: [
+          { name: "Fillet Sandwich", desc: "", sizes: [
+            { label: "Medium", price: 100 },
+            { label: "Large", price: 170 },
+          ] },
+		    items: [
+          { name: "Mix Sandwich", desc: "", sizes: [
+            { label: "Medium", price: 130 },
+            { label: "Large", price: 235 },
+          ] },
+		  
   {
     id: "beanhouse",
     name: "Bean House",
@@ -182,8 +281,15 @@ const RESTAURANTS = [
       {
         name: "Coffee",
         items: [
-          { name: "Flat White", desc: "Double shot, steamed milk", price: 85 },
-          { name: "Iced Spanish Latte", desc: "Espresso, condensed milk, ice", price: 95 },
+          { name: "Flat White", desc: "Double shot, steamed milk", sizes: [
+            { label: "Small", price: 75 },
+            { label: "Medium", price: 85 },
+            { label: "Large", price: 95 },
+          ] },
+          { name: "Iced Spanish Latte", desc: "Espresso, condensed milk, ice", sizes: [
+            { label: "Medium", price: 95 },
+            { label: "Large", price: 110 },
+          ] },
         ]
       },
       {
@@ -243,7 +349,10 @@ const RESTAURANTS = [
       {
         name: "Shakes",
         items: [
-          { name: "Oreo Milkshake", desc: "500ml, whipped cream top", price: 100 },
+          { name: "Oreo Milkshake", desc: "Whipped cream top", sizes: [
+            { label: "350ml", price: 80 },
+            { label: "500ml", price: 100 },
+          ] },
         ]
       },
     ]
@@ -296,11 +405,25 @@ function findMenuItem(r, itemName){
   }
   return null;
 }
+// Cart keys: plain item name for simple items, "Name::Size" for sized items,
+// so a customer can add e.g. both a Small and a Large of the same drink.
+function cartKey(itemName, sizeLabel){ return sizeLabel ? `${itemName}::${sizeLabel}` : itemName; }
+function parseCartKey(key){
+  const idx = key.indexOf('::');
+  return idx === -1 ? { itemName: key, sizeLabel: null } : { itemName: key.slice(0, idx), sizeLabel: key.slice(idx + 2) };
+}
+function lineInfo(r, key){
+  const { itemName, sizeLabel } = parseCartKey(key);
+  const item = findMenuItem(r, itemName);
+  const price = sizeLabel ? item.sizes.find(s => s.label === sizeLabel).price : item.price;
+  const displayName = sizeLabel ? `${itemName} (${sizeLabel})` : itemName;
+  return { itemName, sizeLabel, price, displayName };
+}
 function cartEntries(rid){ return Object.entries(carts[rid] || {}); }
 function cartCount(rid){ return cartEntries(rid).reduce((s,[,q]) => s+q, 0); }
 function cartTotal(rid){
   const r = RESTAURANTS.find(x=>x.id===rid);
-  return cartEntries(rid).reduce((s,[name,q]) => s + findMenuItem(r,name).price*q, 0);
+  return cartEntries(rid).reduce((s,[key,q]) => s + lineInfo(r,key).price*q, 0);
 }
 function filledRestaurants(){ return RESTAURANTS.filter(r => cartCount(r.id) > 0); }
 function totalCartCount(){ return RESTAURANTS.reduce((s,r) => s + cartCount(r.id), 0); }
@@ -397,6 +520,38 @@ function renderMenu(){
 }
 
 function renderItemCard(r, item){
+  if(item.sizes){
+    return `
+      <div class="item-card sized">
+        <div class="item-info">
+          <h4>${item.name}</h4>
+          <p>${item.desc}</p>
+        </div>
+        <div class="size-list">
+          ${item.sizes.map(size => {
+            const key = cartKey(item.name, size.label);
+            const qty = carts[r.id][key] || 0;
+            return `
+              <div class="size-row">
+                <div>
+                  <span class="size-label">${size.label}</span>
+                  <span class="size-price">${fmt(size.price)} EGP</span>
+                </div>
+                ${qty > 0 ? `
+                  <div class="qty-row">
+                    <button class="qty-btn" data-minus data-rid="${r.id}" data-item="${key}">–</button>
+                    <span class="qty-val">${qty}</span>
+                    <button class="qty-btn" data-add data-rid="${r.id}" data-item="${key}">+</button>
+                  </div>
+                ` : `<button class="add-btn" data-add data-rid="${r.id}" data-item="${key}">Add</button>`}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
   const qty = carts[r.id][item.name] || 0;
   return `
     <div class="item-card">
@@ -436,11 +591,11 @@ function renderConfirm(){
         <div class="place-group">
           <h4>🍽️ ${r.name}</h4>
           <div class="summary-card">
-            ${cartEntries(r.id).map(([name, qty]) => {
-              const item = findMenuItem(r, name);
+            ${cartEntries(r.id).map(([key, qty]) => {
+              const { displayName, price } = lineInfo(r, key);
               return `<div class="summary-row">
-                <span class="name"><span class="qty">${qty}×</span>${name}</span>
-                <span class="price">${fmt(item.price*qty)} EGP</span>
+                <span class="name"><span class="qty">${qty}×</span>${displayName}</span>
+                <span class="price">${fmt(price*qty)} EGP</span>
               </div>`;
             }).join('')}
           </div>
@@ -565,9 +720,9 @@ async function placeOrder(){
   const timestamp = new Date().toISOString();
 
   const sends = groups.map(async (r) => {
-    const items = cartEntries(r.id).map(([name, qty]) => {
-      const item = findMenuItem(r, name);
-      return { name, qty, price: item.price, lineTotal: item.price*qty };
+    const items = cartEntries(r.id).map(([key, qty]) => {
+      const { itemName, sizeLabel, price } = lineInfo(r, key);
+      return { name: itemName, size: sizeLabel || "", qty, price, lineTotal: price*qty };
     });
     const payload = {
       orderId: `${mainCode}-${r.id}`,
