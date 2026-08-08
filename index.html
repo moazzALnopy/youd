@@ -149,127 +149,124 @@
    ============================================================ */
 const RESTAURANTS = [
   {
-    id: "Brizo",
+    id: "brizo",
     name: "Brizo",
     tag: "YOUD · Plato area",
-    meta: "Grill and Fried sandwishs",
+    meta: "Grill and Fried sandwiches",
     accent: "#FF6A00",
-    sheetUrl: "PASTE_PLATO_GOOGLE_APPS_SCRIPT_URL_HERE",
+    sheetUrl: "PASTE_BRIZO_GOOGLE_APPS_SCRIPT_URL_HERE",
     categories: [
       {
         name: "Fried meals",
-      items: [
-          { name: "Shermp meal", desc: "", sizes: [
+        items: [
+          { name: "Shrimp meal", desc: "", sizes: [
             { label: "Medium", price: 125 },
             { label: "Large", price: 250 },
           ] },
-		    items: [
           { name: "Squid", desc: "", sizes: [
             { label: "Medium", price: 100 },
             { label: "Large", price: 200 },
           ] },
-		    items: [
           { name: "Fillet", desc: "", sizes: [
             { label: "Medium", price: 100 },
             { label: "Large", price: 200 },
           ] },
-		    items: [
           { name: "Mix", desc: "", sizes: [
             { label: "Large", price: 280 },
           ] },
+        ]
+      },
       {
         name: "Sausage and liver meals",
-  items: [
-          { name: "sausage meal", desc: "", sizes: [
+        items: [
+          { name: "Sausage meal", desc: "", sizes: [
             { label: "Large", price: 220 },
           ] },
-		    items: [
-          { name: "liver meal", desc: "", sizes: [
+          { name: "Liver meal", desc: "", sizes: [
             { label: "Large", price: 180 },
           ] },
-		      items: [
           { name: "Mix meal", desc: "", sizes: [
             { label: "Large", price: 380 },
           ] },
+        ]
+      },
       {
-	   name: "Grilled meals",
-      items: [
-          { name: "Shermp meal", desc: "", sizes: [
+        name: "Grilled meals",
+        items: [
+          { name: "Shrimp meal", desc: "", sizes: [
             { label: "Medium", price: 150 },
             { label: "Large", price: 300 },
           ] },
-		    items: [
           { name: "Squid", desc: "", sizes: [
             { label: "Medium", price: 120 },
             { label: "Large", price: 220 },
           ] },
-		    items: [
           { name: "Fillet", desc: "", sizes: [
             { label: "Medium", price: 120 },
             { label: "Large", price: 220 },
           ] },
-		    items: [
           { name: "Mix", desc: "", sizes: [
             { label: "Medium", price: 150 },
             { label: "Large", price: 300 },
           ] },
-	   {
-                name: "Fried Sandwich",
-      items: [
-          { name: "Shermp meal", desc: "", sizes: [
+        ]
+      },
+      {
+        name: "Fried Sandwich",
+        items: [
+          { name: "Shrimp Sandwich", desc: "", sizes: [
             { label: "Medium", price: 100 },
             { label: "Large", price: 170 },
           ] },
-		    items: [
-          { name: "Squid", desc: "", sizes: [
+          { name: "Squid Sandwich", desc: "", sizes: [
             { label: "Medium", price: 90 },
             { label: "Large", price: 150 },
           ] },
-		    items: [
-          { name: "Fillet", desc: "", sizes: [
+          { name: "Fillet Sandwich", desc: "", sizes: [
             { label: "Medium", price: 90 },
             { label: "Large", price: 150 },
           ] },
-		    items: [
-          { name: "Mix", desc: "", sizes: [
-	  { label: "Medium", price: 130 },	  
+          { name: "Mix Sandwich", desc: "", sizes: [
+            { label: "Medium", price: 130 },
             { label: "Large", price: 220 },
           ] },
+        ]
+      },
       {
         name: "Sausage and liver Sandwich",
-  items: [
-          { name: "sausage Sandwich", desc: "", sizes: [
-           { label: "Medium", price: 120 },  
-		   { label: "Large", price: 150 },
+        items: [
+          { name: "Sausage Sandwich", desc: "", sizes: [
+            { label: "Medium", price: 120 },
+            { label: "Large", price: 150 },
           ] },
-		    items: [
-          { name: "liver Sandwich", desc: "", sizes: [
+          { name: "Liver Sandwich", desc: "", sizes: [
             { label: "Large", price: 90 },
           ] },
-		  
+        ]
+      },
       {
-	   name: "Grilled Sandwich",
-      items: [
-          { name: "Shermp Sandwich", desc: "", sizes: [
+        name: "Grilled Sandwich",
+        items: [
+          { name: "Shrimp Sandwich", desc: "", sizes: [
             { label: "Medium", price: 135 },
             { label: "Large", price: 200 },
           ] },
-		    items: [
           { name: "Squid Sandwich", desc: "", sizes: [
             { label: "Medium", price: 100 },
             { label: "Large", price: 170 },
           ] },
-		    items: [
           { name: "Fillet Sandwich", desc: "", sizes: [
             { label: "Medium", price: 100 },
             { label: "Large", price: 170 },
           ] },
-		    items: [
           { name: "Mix Sandwich", desc: "", sizes: [
             { label: "Medium", price: 130 },
             { label: "Large", price: 235 },
           ] },
-		  
+        ]
+      },
+    ]
+  },
   {
     id: "beanhouse",
     name: "Bean House",
@@ -334,24 +331,49 @@ const RESTAURANTS = [
     sheetUrl: "PASTE_SWEETCORNER_GOOGLE_APPS_SCRIPT_URL_HERE",
     categories: [
       {
-        name: "Cakes",
+        name: "corn dog",
         items: [
-          { name: "Red Velvet Slice", desc: "Cream cheese frosting", price: 90 },
+          { name: "corn dog", desc: "Cream cheese frosting", price: 90 },
+		   { name: "corn dog cheetos", desc: "Cream cheese frosting", price: 90 },
+		    { name: "corn dog cheess", desc: "Cream cheese frosting", price: 90 },
+			 { name: "corn dog sandwiches", desc: "Cream cheese frosting", price: 90 },
         ]
       },
       {
-        name: "Waffles & Sundaes",
+        name: "Waffles Sticks",
         items: [
-          { name: "Belgian Waffle", desc: "Nutella, banana, whipped cream", price: 130 },
-          { name: "Brownie Sundae", desc: "Vanilla ice cream, hot fudge", price: 120 },
+          { name: "Brown or white", desc: "", price: 75 },
+          { name: "chocolate and banana", desc: "", price: 85 },
+		   { name: "Waffle chocochoco", desc: "", price: 85 },
+          { name: "Bistashio", desc: "", price: 90 },
+		   { name: "lotus or kinder", desc: "", price: 85 },
+          { name: "oreo or cotton candy", desc: "", price: 85 },
         ]
       },
       {
-        name: "Shakes",
+        name: "Zalabia",
         items: [
-          { name: "Oreo Milkshake", desc: "Whipped cream top", sizes: [
-            { label: "350ml", price: 80 },
-            { label: "500ml", price: 100 },
+          { name: "Zalabia", desc: "Whipped cream top", sizes: [
+            { label: "suger or honey", price: 80 },
+			{ label: "suger or honey large", price: 140 },
+            { label: "brown or white chocolate", price: 100 },
+			{ label: "brown or white chocolate large", price: 200 },
+			{ label: "mix chocolate", price: 100 },
+			{ label: "mix chocolate large", price: 200 },
+			{ label: "chocochoco", price: 110 },
+			{ label: "chocochoco large", price: 200 },
+			{ label: "cinnamon", price: 100 },
+				{ label: "cinnamon large", price: 180 },
+			{ label: "bistashio", price: 120 },
+			{ label: "bistashio large", price: 220 },
+			{ label: "lotus", price: 100 },
+			{ label: "lotus large", price: 200 },
+			{ label: "kinder", price: 100 },
+			{ label: "kinder large", price: 200 }
+			{ label: "oreo", price: 100 },
+			{ label: "oreo large", price: 200 },
+			{ label: "cotton candy", price: 100 },
+				{ label: "cotton candy", price: 200 },
           ] },
         ]
       },
@@ -368,10 +390,9 @@ const RESTAURANTS = [
    Edit freely to match Plato's real zones/tables.
    ============================================================ */
 const AREAS = [
-  { code: "beach-front", label: "Beach Front" },
-  { code: "pool-deck", label: "Pool Deck" },
+  { code: "BIG SCREEN", label: "Beach Front" },
+  { code: "Sea View", label: "Pool Deck" },
   { code: "main-lounge", label: "Main Lounge" },
-  { code: "garden-terrace", label: "Garden Terrace" },
 ];
 
 /* ============================================================
@@ -398,26 +419,24 @@ const fmt = n => n.toLocaleString('en-US');
 const areaLabel = code => (AREAS.find(a => a.code === code) || {}).label || code;
 
 function currentRestaurant(){ return RESTAURANTS.find(r => r.id === activeId); }
-function findMenuItem(r, itemName){
-  for(const cat of r.categories){
-    const found = cat.items.find(i => i.name === itemName);
-    if(found) return found;
-  }
-  return null;
+function findCategory(r, catName){ return r.categories.find(c => c.name === catName); }
+function findMenuItem(r, catName, itemName){
+  const cat = findCategory(r, catName);
+  return cat ? cat.items.find(i => i.name === itemName) : null;
 }
-// Cart keys: plain item name for simple items, "Name::Size" for sized items,
-// so a customer can add e.g. both a Small and a Large of the same drink.
-function cartKey(itemName, sizeLabel){ return sizeLabel ? `${itemName}::${sizeLabel}` : itemName; }
+// Cart keys carry category + item + size, so two dishes with the same name in
+// different categories (e.g. "Squid" under Fried vs Grilled) never collide.
+function cartKey(catName, itemName, sizeLabel){ return `${catName}::${itemName}::${sizeLabel || ''}`; }
 function parseCartKey(key){
-  const idx = key.indexOf('::');
-  return idx === -1 ? { itemName: key, sizeLabel: null } : { itemName: key.slice(0, idx), sizeLabel: key.slice(idx + 2) };
+  const [catName, itemName, sizeLabel] = key.split('::');
+  return { catName, itemName, sizeLabel: sizeLabel || null };
 }
 function lineInfo(r, key){
-  const { itemName, sizeLabel } = parseCartKey(key);
-  const item = findMenuItem(r, itemName);
+  const { catName, itemName, sizeLabel } = parseCartKey(key);
+  const item = findMenuItem(r, catName, itemName);
   const price = sizeLabel ? item.sizes.find(s => s.label === sizeLabel).price : item.price;
   const displayName = sizeLabel ? `${itemName} (${sizeLabel})` : itemName;
-  return { itemName, sizeLabel, price, displayName };
+  return { catName, itemName, sizeLabel, price, displayName };
 }
 function cartEntries(rid){ return Object.entries(carts[rid] || {}); }
 function cartCount(rid){ return cartEntries(rid).reduce((s,[,q]) => s+q, 0); }
@@ -468,7 +487,7 @@ function renderHome(){
   return `
     <div class="topbar">
       <div class="logo-wrap">
-        <img class="logo" src="https://alahlysabbour.com/uploads/1125/01K4HSYYKNHZTVYHA5DXH9C5MW.png" alt="Logo">
+        <img class="logo" src="https://i.ibb.co/jkF3R4WX/youd.png'" alt="Logo">
       </div>
       ${areaLocked ? `<div class="loc">📍 ${areaLabel(selectedArea)}</div>` : ''}
     </div>
@@ -511,7 +530,7 @@ function renderMenu(){
       ${r.categories.map(cat => `
         <div class="cat-title">${cat.name}</div>
         <div class="menu-list">
-          ${cat.items.map(item => renderItemCard(r, item)).join('')}
+          ${cat.items.map(item => renderItemCard(r, cat.name, item)).join('')}
         </div>
       `).join('')}
     </div>
@@ -519,7 +538,7 @@ function renderMenu(){
   `;
 }
 
-function renderItemCard(r, item){
+function renderItemCard(r, catName, item){
   if(item.sizes){
     return `
       <div class="item-card sized">
@@ -529,7 +548,7 @@ function renderItemCard(r, item){
         </div>
         <div class="size-list">
           ${item.sizes.map(size => {
-            const key = cartKey(item.name, size.label);
+            const key = cartKey(catName, item.name, size.label);
             const qty = carts[r.id][key] || 0;
             return `
               <div class="size-row">
@@ -552,7 +571,8 @@ function renderItemCard(r, item){
     `;
   }
 
-  const qty = carts[r.id][item.name] || 0;
+  const key = cartKey(catName, item.name, null);
+  const qty = carts[r.id][key] || 0;
   return `
     <div class="item-card">
       <div class="item-info">
@@ -563,11 +583,11 @@ function renderItemCard(r, item){
       <div class="item-right">
         ${qty > 0 ? `
           <div class="qty-row">
-            <button class="qty-btn" data-minus data-rid="${r.id}" data-item="${item.name}">–</button>
+            <button class="qty-btn" data-minus data-rid="${r.id}" data-item="${key}">–</button>
             <span class="qty-val">${qty}</span>
-            <button class="qty-btn" data-add data-rid="${r.id}" data-item="${item.name}">+</button>
+            <button class="qty-btn" data-add data-rid="${r.id}" data-item="${key}">+</button>
           </div>
-        ` : `<button class="add-btn" data-add data-rid="${r.id}" data-item="${item.name}">Add</button>`}
+        ` : `<button class="add-btn" data-add data-rid="${r.id}" data-item="${key}">Add</button>`}
       </div>
     </div>
   `;
