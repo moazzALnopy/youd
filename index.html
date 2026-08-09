@@ -104,6 +104,11 @@
   .summary-row .price{font-weight:700;}
   .place-subtotal{text-align:right;font-size:12px;color:var(--grey);margin-top:6px;padding-right:2px;}
 
+  .review-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);gap:10px;}
+  .review-row:last-child{border-bottom:none;}
+  .review-row .review-name{font-size:13.5px;font-weight:600;color:var(--ink);}
+  .review-row .review-price{font-size:11.5px;color:var(--grey);margin-top:2px;}
+
   .totals{margin-top:14px;background:var(--card);border-radius:14px;border:1px solid var(--line);padding:14px;}
   .totals .row{display:flex;justify-content:space-between;font-size:13px;color:var(--grey);padding:4px 0;}
   .totals .row.total{color:var(--ink);font-weight:800;font-size:15.5px;padding-top:10px;margin-top:6px;border-top:1px dashed var(--line);}
@@ -129,6 +134,7 @@
   .success-wrap p{font-size:13.5px;color:var(--grey);line-height:1.6;margin-bottom:26px;}
   .order-id{font-family:'Inter',monospace;background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:12px;font-size:13px;color:var(--grey);margin-bottom:26px;}
   .home-btn{background:var(--ink);color:#fff;border:none;padding:14px 26px;border-radius:12px;font-weight:700;font-size:13.5px;cursor:pointer;}
+  .system-credit{margin-top:36px;font-size:11px;color:var(--grey-light);}
 </style>
 </head>
 <body>
@@ -145,100 +151,187 @@ const RESTAURANTS = [
     sheetUrl: "https://script.google.com/macros/s/AKfycbw4Xzt4FLTYEC1wzsBa4IXebJceD27O7W2B8acHcWLSu0XHZVC3iUP2HxNNj_lGMRoWHA/exec",
     categories: [
       { name: "Fried meals", items: [
-        { name: "Shrimp meal", desc: "", sizes: [{ label: "Medium", price: 125 },{ label: "Large", price: 250 }] },
-        { name: "Squid", desc: "", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 200 }] },
-        { name: "Fillet", desc: "", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 200 }] },
-        { name: "Mix", desc: "", sizes: [{ label: "Large", price: 280 }] },
+        { name: "Shrimp meal", sizes: [{ label: "Medium", price: 125 },{ label: "Large", price: 250 }] },
+        { name: "Squid", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 200 }] },
+        { name: "Fillet", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 200 }] },
+        { name: "Mix", sizes: [{ label: "Large", price: 280 }] },
       ]},
       { name: "Sausage and liver meals", items: [
-        { name: "Sausage meal", desc: "", sizes: [{ label: "Large", price: 220 }] },
-        { name: "Liver meal", desc: "", sizes: [{ label: "Large", price: 180 }] },
-        { name: "Mix meal", desc: "", sizes: [{ label: "Large", price: 380 }] },
+        { name: "Sausage meal", sizes: [{ label: "Large", price: 220 }] },
+        { name: "Liver meal", sizes: [{ label: "Large", price: 180 }] },
+        { name: "Mix meal", sizes: [{ label: "Large", price: 380 }] },
       ]},
       { name: "Grilled meals", items: [
-        { name: "Shrimp meal", desc: "", sizes: [{ label: "Medium", price: 150 },{ label: "Large", price: 300 }] },
-        { name: "Squid", desc: "", sizes: [{ label: "Medium", price: 120 },{ label: "Large", price: 220 }] },
-        { name: "Fillet", desc: "", sizes: [{ label: "Medium", price: 120 },{ label: "Large", price: 220 }] },
-        { name: "Mix", desc: "", sizes: [{ label: "Medium", price: 150 },{ label: "Large", price: 300 }] },
+        { name: "Shrimp meal", sizes: [{ label: "Medium", price: 150 },{ label: "Large", price: 300 }] },
+        { name: "Squid", sizes: [{ label: "Medium", price: 120 },{ label: "Large", price: 220 }] },
+        { name: "Fillet", sizes: [{ label: "Medium", price: 120 },{ label: "Large", price: 220 }] },
+        { name: "Mix", sizes: [{ label: "Medium", price: 150 },{ label: "Large", price: 300 }] },
       ]},
       { name: "Fried Sandwich", items: [
-        { name: "Shrimp Sandwich", desc: "", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 170 }] },
-        { name: "Squid Sandwich", desc: "", sizes: [{ label: "Medium", price: 90 },{ label: "Large", price: 150 }] },
-        { name: "Fillet Sandwich", desc: "", sizes: [{ label: "Medium", price: 90 },{ label: "Large", price: 150 }] },
-        { name: "Mix Sandwich", desc: "", sizes: [{ label: "Medium", price: 130 },{ label: "Large", price: 220 }] },
+        { name: "Shrimp Sandwich", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 170 }] },
+        { name: "Squid Sandwich", sizes: [{ label: "Medium", price: 90 },{ label: "Large", price: 150 }] },
+        { name: "Fillet Sandwich", sizes: [{ label: "Medium", price: 90 },{ label: "Large", price: 150 }] },
+        { name: "Mix Sandwich", sizes: [{ label: "Medium", price: 130 },{ label: "Large", price: 220 }] },
       ]},
       { name: "Sausage and liver Sandwich", items: [
-        { name: "Sausage Sandwich", desc: "", sizes: [{ label: "Medium", price: 120 },{ label: "Large", price: 150 }] },
-        { name: "Liver Sandwich", desc: "", sizes: [{ label: "Large", price: 90 }] },
+        { name: "Sausage Sandwich", sizes: [{ label: "Medium", price: 120 },{ label: "Large", price: 150 }] },
+        { name: "Liver Sandwich", sizes: [{ label: "Large", price: 90 }] },
       ]},
       { name: "Grilled Sandwich", items: [
-        { name: "Shrimp Sandwich", desc: "", sizes: [{ label: "Medium", price: 135 },{ label: "Large", price: 200 }] },
-        { name: "Squid Sandwich", desc: "", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 170 }] },
-        { name: "Fillet Sandwich", desc: "", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 170 }] },
-        { name: "Mix Sandwich", desc: "", sizes: [{ label: "Medium", price: 130 },{ label: "Large", price: 235 }] },
+        { name: "Shrimp Sandwich", sizes: [{ label: "Medium", price: 135 },{ label: "Large", price: 200 }] },
+        { name: "Squid Sandwich", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 170 }] },
+        { name: "Fillet Sandwich", sizes: [{ label: "Medium", price: 100 },{ label: "Large", price: 170 }] },
+        { name: "Mix Sandwich", sizes: [{ label: "Medium", price: 130 },{ label: "Large", price: 235 }] },
       ]},
     ]
   },
   {
-    id: "beanhouse",
-    name: "Bean House",
-    tag: "Specialty coffee & pastries",
+    id: "Cilo",
+    name: "CILO",
+    tag: "Specialty coffee",
     meta: "Coffee shop",
     accent: "#8B5E34",
     sheetUrl: "PASTE_BEANHOUSE_GOOGLE_APPS_SCRIPT_URL_HERE",
     categories: [
-      { name: "Coffee", items: [
-        { name: "Flat White", desc: "Double shot, steamed milk", sizes: [{ label: "Small", price: 75 },{ label: "Medium", price: 85 },{ label: "Large", price: 95 }] },
-        { name: "Iced Spanish Latte", desc: "Espresso, condensed milk, ice", sizes: [{ label: "Medium", price: 95 },{ label: "Large", price: 110 }] },
+      { name: "DRINKS", items: [
+        { name: "Milk shake", sizes: [
+          { label: "chocolete", price: 160 },
+          { label: "vanilla", price: 160 },
+          { label: "caramel", price: 160 },
+          { label: "nutella", price: 170 },
+          { label: "snickers", price: 180 },
+          { label: "loutes", price: 170 },
+          { label: "oreo", price: 160 },
+          { label: "mango", price: 160 },
+          { label: "pistacheio", price: 190 },
+          { label: "strawberry", price: 160 },
+        ]},
+        { name: "FRESH DRINKS", sizes: [
+          { label: "mango", price: 150 },
+          { label: "strawberry", price: 120 },
+          { label: "watermelon", price: 120 },
+          { label: "lemon and mint", price: 135 },
+          { label: "mango and strawberry", price: 160 },
+        ]},
+        { name: "Soft drink", sizes: [
+          { label: "cola", price: 60 },
+          { label: "7up", price: 60 },
+          { label: "mirinda", price: 60 },
+          { label: "redbull", price: 90 },
+          { label: "twist", price: 60 },
+          { label: "schweppes", price: 65 },
+          { label: "water", price: 20 },
+          { label: "birell", price: 75 },
+          { label: "cocacola", price: 60 },
+          { label: "coca dite", price: 60 },
+        ]},
       ]},
-      { name: "Pastries", items: [
-        { name: "Croissant", desc: "Butter, baked fresh daily", price: 60 },
-        { name: "Cheese Danish", desc: "Flaky pastry, cream cheese filling", price: 70 },
+      { name: "Smoothie", items: [
+        { name: "watermelon", price: 150 },
+        { name: "strawberry", price: 150 },
+        { name: "mango", price: 160 },
+        { name: "kiwi", price: 180 },
+        { name: "lemon mint", price: 150 },
+        { name: "peach", price: 150 },
+        { name: "blueberry", price: 180 },
+        { name: "mango passion", price: 180 },
+      ]},
+      { name: "hot drinks", items: [
+        { name: "TRCISH COFFEE", price: 60 },
+        { name: "TEA", price: 45 },
+        { name: "TEA WITH MILK", price: 60 },
+        { name: "YANSON", price: 45 },
       ]},
     ]
   },
   {
-    id: "nilegrill",
-    name: "Nile Grill",
-    tag: "Charcoal grill & mezze",
-    meta: "Grill house",
+    id: "ELFatatri",
+    name: "EL fatatri",
+    tag: "PIZAA & Feteer & PASTA",
+    meta: "RESTAURANT",
     accent: "#C2410C",
     sheetUrl: "PASTE_NILEGRILL_GOOGLE_APPS_SCRIPT_URL_HERE",
     categories: [
-      { name: "Mezze", items: [
-        { name: "Hummus", desc: "Tahini, olive oil, warm bread", price: 55 },
-        { name: "Baba Ghanoush", desc: "Smoked eggplant dip", price: 55 },
+      { name: "pizza", items: [
+        { name: "margreta", price: 200 },
+        { name: "vegetables", price: 220 },
+		{ name: "chicken", price: 275 },
+        { name: "chicken ranch", price: 295 },
+		{ name: "super supreme", price: 320 },
+        { name: "sausage", price: 275 },
+		{ name: "mix chesse", price: 285 },
+        { name: "meat lover", price: 330 },
+		{ name: "pepperoni", price: 275 },
+        { name: "pastrma", price: 275 },
+		{ name: "funghi", price: 250 },
+        { name: "Susis", price: 275 },
+		{ name: "tona", price: 240 },
+        { name: "shrimp", price: 350 },
+		{ name: "sea food", price: 385 },
       ]},
-      { name: "Grills", items: [
-        { name: "Mixed Grill Platter", desc: "Kofta, shish tawook, rice", price: 320 },
-        { name: "Grilled Chicken Half", desc: "Marinated, served with garlic sauce", price: 180 },
+	   { name: "burger", items: [
+        { name: "classic burger", price: 150 },
+        { name: "chili burger", price: 180 },
+        { name: "mashroom burger", price: 170 },
+      ]},
+	   { name: "Feteer", items: [
+        { name: "vegetables", price: 235 },
+        { name: "chicken", price: 275 },
+		        { name: "sausage", price: 275 },
+        { name: "sausage Kiri", price: 320 },
+		{ name: "pastrma", price: 275 },
+		        { name: "pastrma Kiri", price: 320 },
+        { name: "Ground meat", price: 285 },
+		        { name: "mix chesse", price: 285 },
+        { name: "tona", price: 240 },
+		        { name: "shrimp", price: 350 },
+        { name: "sea food", price: 385 },
+		        { name: "pepperoni", price: 320 },
+        { name: "mashroom", price: 255 },
+		        { name: "meat lover", price: 330 },
+      ]},
+	   { name: "Sweet feteer", items: [
+        { name: "suger and milk", price: 115 },
+        { name: "cusraed", price: 130 },
+		        { name: "nutella", price: 170 },
+        { name: "nutella with banana", price: 200 },
+		        { name: "loutes", price: 170 },
+        { name: "nutella with loutes", price: 230 },
+      ]},
+      { name: "pasta", items: [
+        { name: "Alfredo", price: 200 },
+        { name: "negresco", price: 200 },
+		        { name: "bolognese", price: 200 },
+        { name: "Sausage", price: 195 },
+		        { name: "Susis", price: 195 },
+        { name: "red sauce", price: 125 },
       ]},
     ]
   },
   {
     id: "sweetcorner",
     name: "Sweet Corner",
-    tag: "Cakes, shakes & desserts",
+    tag: "Zalabia, Corn dog & Waffle",
     meta: "Dessert bar",
     accent: "#A21CAF",
     sheetUrl: "PASTE_SWEETCORNER_GOOGLE_APPS_SCRIPT_URL_HERE",
     categories: [
       { name: "corn dog", items: [
-        { name: "corn dog", desc: "Cream cheese frosting", price: 90 },
-        { name: "corn dog cheetos", desc: "Cream cheese frosting", price: 90 },
-        { name: "corn dog cheess", desc: "Cream cheese frosting", price: 90 },
-        { name: "corn dog sandwiches", desc: "Cream cheese frosting", price: 90 },
+        { name: "corn dog", price: 90 },
+        { name: "corn dog cheetos", price: 90 },
+        { name: "corn dog cheess", price: 90 },
+        { name: "corn dog sandwiches", price: 90 },
       ]},
       { name: "Waffles Sticks", items: [
-        { name: "Brown or white", desc: "", price: 75 },
-        { name: "chocolate and banana", desc: "", price: 85 },
-        { name: "Waffle chocochoco", desc: "", price: 85 },
-        { name: "Bistashio", desc: "", price: 90 },
-        { name: "lotus or kinder", desc: "", price: 85 },
-        { name: "oreo or cotton candy", desc: "", price: 85 },
+        { name: "Brown or white", price: 75 },
+        { name: "chocolate and banana", price: 85 },
+        { name: "Waffle chocochoco", price: 85 },
+        { name: "Bistashio", price: 90 },
+        { name: "lotus or kinder", price: 85 },
+        { name: "oreo or cotton candy", price: 85 },
       ]},
       { name: "Zalabia", items: [
-        { name: "Zalabia", desc: "Whipped cream top", sizes: [
+        { name: "Zalabia", sizes: [
           { label: "suger or honey", price: 80 },
           { label: "suger or honey large", price: 140 },
           { label: "brown or white chocolate", price: 100 },
@@ -270,6 +363,10 @@ const AREAS = [
   { code: "sea-view", label: "Sea View" },
   { code: "main-lounge", label: "Main Lounge" },
 ];
+
+// Shown as a small footer line on the final "Order placed" screen.
+// Edit this text to whatever credit line you'd like.
+const SYSTEM_CREDIT = "This system made with ❤️";
 
 let screen = "home";
 let activeId = null;
@@ -328,6 +425,7 @@ function changeQty(rid, itemName, delta){
 function render(){
   if(screen === "home") appEl.innerHTML = renderHome();
   else if(screen === "menu") appEl.innerHTML = renderMenu();
+  else if(screen === "review") appEl.innerHTML = renderReview();
   else if(screen === "confirm") appEl.innerHTML = renderConfirm();
   else if(screen === "success") appEl.innerHTML = renderSuccess();
   bindEvents();
@@ -339,7 +437,7 @@ function renderGlobalCartBar(){
   const places = filledRestaurants().map(r => r.name).join(", ");
   return `
     <div class="cartbar">
-      <div class="cartbar-inner" data-go-confirm>
+      <div class="cartbar-inner" data-go-review>
         <div class="cart-left">
           <div class="cart-count">${count}</div>
           <div>
@@ -414,7 +512,6 @@ function renderItemCard(r, catName, item){
       <div class="item-card sized">
         <div class="item-info">
           <h4>${item.name}</h4>
-          <p>${item.desc}</p>
         </div>
         <div class="size-list">
           ${item.sizes.map(size => {
@@ -447,7 +544,6 @@ function renderItemCard(r, catName, item){
     <div class="item-card">
       <div class="item-info">
         <h4>${item.name}</h4>
-        <p>${item.desc}</p>
         <div class="item-price">${fmt(item.price)} EGP</div>
       </div>
       <div class="item-right">
@@ -463,6 +559,70 @@ function renderItemCard(r, catName, item){
   `;
 }
 
+function renderReview(){
+  const groups = filledRestaurants();
+  const total = totalCartValue();
+
+  if(groups.length === 0){
+    return `
+      <div class="back-topbar">
+        <button class="back-btn" data-back-home>←</button>
+        <div><h2>Your order</h2></div>
+      </div>
+      <div class="section">
+        <p style="color:var(--grey);font-size:13.5px;text-align:center;padding:40px 0;">Your order is empty. Go back and add some items.</p>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="back-topbar">
+      <button class="back-btn" data-back-home>←</button>
+      <div>
+        <h2>Review order</h2>
+        <div class="sub">${groups.map(r=>r.name).join(' · ')}</div>
+      </div>
+    </div>
+    <div class="section">
+      ${groups.map(r => `
+        <div class="place-group">
+          <h4>🍽️ ${r.name}</h4>
+          <div class="summary-card">
+            ${cartEntries(r.id).map(([key, qty]) => {
+              const { displayName, price } = lineInfo(r, key);
+              return `
+                <div class="review-row">
+                  <div>
+                    <div class="review-name">${displayName}</div>
+                    <div class="review-price">${fmt(price)} EGP each · ${fmt(price*qty)} EGP</div>
+                  </div>
+                  <div class="qty-row">
+                    <button class="qty-btn" data-minus data-rid="${r.id}" data-item="${key}">–</button>
+                    <span class="qty-val">${qty}</span>
+                    <button class="qty-btn" data-add data-rid="${r.id}" data-item="${key}">+</button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+          <div class="place-subtotal">Subtotal: ${fmt(cartTotal(r.id))} EGP</div>
+        </div>
+      `).join('')}
+
+      <div class="totals">
+        <div class="row total"><span>Total</span><span>${fmt(total)} EGP</span></div>
+      </div>
+    </div>
+
+    <div style="height:110px;"></div>
+    <div class="place-order-bar">
+      <button class="place-btn" id="continue-btn">
+        <span class="btn-label">Continue · ${fmt(total)} EGP</span>
+      </button>
+    </div>
+  `;
+}
+
 function renderConfirm(){
   const groups = filledRestaurants();
   const multi = groups.length > 1;
@@ -470,7 +630,7 @@ function renderConfirm(){
 
   return `
     <div class="back-topbar">
-      <button class="back-btn" data-back-home>←</button>
+      <button class="back-btn" data-back-review>←</button>
       <div>
         <h2>Confirm order</h2>
         <div class="sub">${groups.map(r=>r.name).join(' · ')}</div>
@@ -549,6 +709,7 @@ function renderSuccess(){
       <p>${lastOrderSummary.restaurants.join(', ')} ${lastOrderSummary.restaurants.length > 1 ? 'have' : 'has'} received your order and will start preparing it shortly.</p>
       <div class="order-id">Order reference: ${lastOrderSummary.code}</div>
       <button class="home-btn" data-back-home>Back to home</button>
+      <div class="system-credit">${SYSTEM_CREDIT}</div>
     </div>
   `;
 }
@@ -560,8 +721,11 @@ function bindEvents(){
   appEl.querySelectorAll('[data-back-home]').forEach(el=>{
     el.addEventListener('click', ()=>{ screen = "home"; render(); });
   });
-  appEl.querySelectorAll('[data-go-confirm]').forEach(el=>{
-    el.addEventListener('click', ()=>{ screen = "confirm"; render(); });
+  appEl.querySelectorAll('[data-back-review]').forEach(el=>{
+    el.addEventListener('click', ()=>{ screen = "review"; render(); });
+  });
+  appEl.querySelectorAll('[data-go-review]').forEach(el=>{
+    el.addEventListener('click', ()=>{ screen = "review"; render(); });
   });
   appEl.querySelectorAll('[data-add]').forEach(el=>{
     el.addEventListener('click', ()=> changeQty(el.dataset.rid, el.dataset.item, 1));
@@ -569,6 +733,9 @@ function bindEvents(){
   appEl.querySelectorAll('[data-minus]').forEach(el=>{
     el.addEventListener('click', ()=> changeQty(el.dataset.rid, el.dataset.item, -1));
   });
+
+  const continueBtn = document.getElementById('continue-btn');
+  if(continueBtn) continueBtn.addEventListener('click', ()=>{ screen = "confirm"; render(); });
 
   const placeBtn = document.getElementById('place-order-btn');
   if(placeBtn) placeBtn.addEventListener('click', placeOrder);
